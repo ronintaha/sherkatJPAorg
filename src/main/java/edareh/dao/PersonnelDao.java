@@ -6,6 +6,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import javax.enterprise.context.RequestScoped;
 import java.sql.*;
@@ -13,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequestScoped
-public class  PersonnelDao {
+public class PersonnelDao {
 
     public void createTablePersonnel() {
         DBHandler dbHandler = new DBHandler();
@@ -58,8 +61,8 @@ public class  PersonnelDao {
             em = getEntityManager();
             Query query = em.createNamedQuery("findByNationalCode");
             query.setParameter("nationalCode", searchNationalCode);
-           Personnel personnel = (Personnel) query.getSingleResult();
-           return personnel;
+            Personnel personnel = (Personnel) query.getSingleResult();
+            return personnel;
 
         } catch (Exception exception) {
             return new Personnel("no one found", "no one found", "no one found", "no one found");
@@ -70,6 +73,7 @@ public class  PersonnelDao {
 
         }
     }
+
     public List<Personnel> findAllByJpql() {
         EntityManager em = null;
         try {
@@ -85,6 +89,32 @@ public class  PersonnelDao {
                 em.close();
             }
 
+        }
+    }
+
+    //    criteria
+    public List<Personnel> criteria() {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<Personnel> criteriaQuery = builder.createQuery(Personnel.class);
+
+            Root<Personnel> p = criteriaQuery.from(Personnel.class);
+
+            criteriaQuery.select(p).where(builder.equal(p.get("name"), "mohamad"));
+
+            List<Personnel> resultList = em.createQuery(criteriaQuery).getResultList();
+
+            return resultList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
 }
