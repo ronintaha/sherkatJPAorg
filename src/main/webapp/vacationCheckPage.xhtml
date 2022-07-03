@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/7/22
+  Time: 11:56 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Checking</title>
+
+</h:head>
+
+<h:body>
+<ui:composition template="templates/common.xhtml">
+    <ui:define name="content">
+    <h:form>
+        <h3>
+            Please enter your national code to see your request answer :
+        </h3>
+        <h:inputText value="#{vacationCheckManageBean.nationalCode}"/>
+        <h:commandButton value="Check" actionListener="#{vacationCheckManageBean.getInformationForVacation()}">
+            <f:actionListener binding="#{vacationCheckManageBean.doCheck()}"/>
+        </h:commandButton>
+        <h4>
+            #{vacationCheckManageBean.massageCheck}
+        </h4><hr/>
+        <h:commandButton value="Back to home" action="welcomePage"/>
+    </h:form>
+    </ui:define>
+</ui:composition>
+</h:body>
+
+</html>

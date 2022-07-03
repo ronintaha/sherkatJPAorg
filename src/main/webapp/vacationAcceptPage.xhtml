@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/7/22
+  Time: 11:56 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Accept</title>
+
+</h:head>
+
+<h:body>
+<ui:composition template="templates/common.xhtml">
+    <ui:define name="content">
+    <h:form>
+
+        <h3>
+            WELCOME , Please enter your manager ID :
+        </h3><br/>
+        <h:inputText value="#{vacationAcceptManageBean.manID}" />
+        <h:commandButton value="Login" actionListener="#{vacationAcceptManageBean.doManager()}"/>
+        <h3>
+            #{vacationAcceptManageBean.massage2}
+        </h3><br/>
+
+        <h:inputText value="#{vacationAcceptManageBean.nationalCode}" />
+
+        <h:commandButton value="Check" actionListener="#{vacationAcceptManageBean.getVacationDao()}" >
+<!--            <f:actionListener binding="#{getVacationDao.getVacationDao()}"/>-->
+            <f:actionListener binding="#{vacationAcceptManageBean.doLeave()}"/>
+        </h:commandButton><hr/>
+        <h3>
+            #{vacationAcceptManageBean.massageLeave}
+        </h3>
+
+        <h:selectOneRadio value="#{vacationAcceptManageBean.vacation.confirm}">
+            <f:selectItem itemValue="confirmed" itemLabel="Yes"/>
+            <f:selectItem itemValue="not confirmed" itemLabel="No"/>
+        </h:selectOneRadio>
+        <h:commandButton value="confirm" actionListener="#{vacationAcceptManageBean.confirmData()}">
+        <f:actionListener binding="#{vacationAcceptManageBean.doConfirm()}"/>
+    </h:commandButton><hr/>
+        <h4>
+        #{vacationAcceptManageBean.massageConfirm}
+        </h4>
+        <h:commandButton value="Back to home" action="welcomePage"/>
+
+
+    </h:form>
+    </ui:define>
+</ui:composition>
+</h:body>
+
+</html>

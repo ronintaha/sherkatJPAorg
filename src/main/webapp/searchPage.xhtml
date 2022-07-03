@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/7/22
+  Time: 11:54 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Search</title>
+
+</h:head>
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+    <ui:define name="content">
+<h:form>
+    <h3>Please enter national code of person you want too find: </h3> <p:inputText value="#{searchPageManageBean.nationalCode}"  /> <br/>
+
+    <p:commandButton actionListener="#{searchPageManageBean.getInformation()}" value="Search" update="output1,output2,output3"/><hr/>
+
+    <h:outputText  value="Information of person you want is ... "/><hr/>
+    Name : <h:outputText id="output1" value="#{searchPageManageBean.personnel.name}"/><hr/>
+    Lastname : <h:outputText id="output2" value="#{searchPageManageBean.personnel.lasteName}"/><hr/>
+    Age : <h:outputText id="output3" value="#{searchPageManageBean.personnel.age}"/><hr/>
+
+    <p:commandButton value="Back to home" action="welcomePage"/>
+
+
+
+</h:form>
+    </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

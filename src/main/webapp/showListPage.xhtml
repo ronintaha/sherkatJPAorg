@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/12/22
+  Time: 12:55 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Show List</title>
+
+</h:head>
+
+<h:body>
+<ui:composition template="templates/common.xhtml">
+    <ui:define name="content">
+    <div style="margin-top: 20px;margin-bottom: 50px;height: 1000px" >
+        <h:dataTable value="#{signInPageManageBean.personnelList}" var="personnelVar" style="background-color: indigo;width: 350px " rowClasses="authorTableOddRow,authorTableEvenRow" headerClass="authorTableHeader">
+
+            <h:column ><f:facet name="header">Name</f:facet>
+                <h:outputText value="#{personnelVar.name}"/>
+            </h:column>
+
+            <h:column><f:facet name="header">LastName</f:facet>
+                <h:outputText value="#{personnelVar.lasteName}"/>
+            </h:column>
+
+            <h:column><f:facet name="header">Age</f:facet>
+                <h:outputText value="#{personnelVar.age}"/>
+            </h:column>
+
+            <h:column><f:facet name="header">NationalCode</f:facet>
+                <h:outputText value="#{personnelVar.nationalCode}"/>
+            </h:column>
+
+        </h:dataTable>
+    </div>
+        <style type="text/css">
+            .speeddial-linear-demo .ui-speeddial-direction-right {
+                left: 0;
+                top: calc(80% - 3rem);
+            }
+
+            .authorTableHeader {
+                text-align:center;
+                background-color: aquamarine;
+                border-bottom:1px solid #000000;
+                border-top:1px solid #000000;
+                padding:2px;
+            }
+
+            .authorTableOddRow {
+                text-align:center;
+                background-color: aqua;
+            }
+
+            .authorTableEvenRow {
+                text-align:center;
+                background:none repeat scroll 0 0 #D3D3D3;
+            }
+        </style>
+
+    </ui:define>
+</ui:composition>
+</h:body>
+
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/7/22
+  Time: 11:34 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head >
+    <title>Sherkat JSF</title>
+</h:head>
+
+<body>
+<ui:composition template="templates/common.xhtml">
+<ui:define name="content">
+<div style="background-color: aquamarine; height: 150px; text-align: center">
+        <h4 style="padding-top: 65px;padding-right: 100px">WELCOME !</h4>
+</div>
+
+<div style="margin-left: 400px ;margin-right: 400px" >
+
+<p:linkButton  style="background: brown;width: 200px"  outcome="showListPage" value="Show all personnels"/>
+
+<p:linkButton style="background:indigo;width: 200px"  outcome="vacationReqPage" value="Vacation request"/>
+
+<p:linkButton style="background: blueviolet;width: 200px" outcome="vacationAcceptPage" value="Manage requests"/>
+
+<p:linkButton style="background: firebrick;width: 200px" outcome="vacationCheckPage" value="Check your request"/>
+
+    </div>
+</ui:define>
+</ui:composition>
+</body>
+
+
+
+</html>

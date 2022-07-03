@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: programmer
+  Date: 6/7/22
+  Time: 12:10 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Sign in</title>
+
+</h:head>
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <h3> Please enter your informations : #{signInPageManageBean.createTablePersonnel()}</h3>
+                <hr/>
+                Your first name.......: <p:inputText value="#{signInPageManageBean.personnel.name}"/><br/>
+                Your last name.......: <p:inputText value="#{signInPageManageBean.personnel.lasteName}"/><br/>
+                Your age.................: <p:inputText value="#{signInPageManageBean.personnel.age}"/><br/>
+                Your national code.: <p:inputText value="#{signInPageManageBean.personnel.nationalCode}"/><br/>
+                <p:commandButton value="save" actionListener="#{signInPageManageBean.doInfo}" update="output"/><br/>
+                <hr/>
+                <h:outputText id="output" value="#{signInPageManageBean.message}"/>
+                <hr/>
+                <p:commandButton style="background: blueviolet" value="add in DataBase and Go to Home "
+                                 actionListener="#{signInPageManageBean.InsertInfo}"
+                                 action="welcomePage"/><br/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>
